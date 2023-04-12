@@ -1,12 +1,16 @@
 import express from "express";
+import dotenv from "dotenv";
 import pexelsRoutes from "./routes/pexelsRoutes.js";
 
 const app = express();
+dotenv.config();
 
 app.get("/", (req, res) => {
   res.send("Test text");
 });
 
-app.use('/api/pexels', pexelsRoutes);
+app.use("/api/pexels", pexelsRoutes);
 
-app.listen(5000, console.log("Server started on port 5000..."));
+const PORT = process.env.PORT;
+
+app.listen(PORT, console.log(`Server started on port ${PORT}`));
