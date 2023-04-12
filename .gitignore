@@ -1,15 +1,16 @@
-# npm
-node_modules
-package-lock.json
+lib-cov
+*.seed
 *.log
+*.csv
+*.dat
+*.out
+*.pid
 *.gz
 
-# Coveralls
-.nyc_output
-coverage
+pids
+logs
+results
+build
 
-# Benchmarking
-benchmarks/graphs
+node_modules
 
-# ignore additional files using core.excludesFile
-# https://git-scm.com/docs/gitignore

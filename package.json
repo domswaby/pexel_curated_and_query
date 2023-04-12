@@ -9,7 +9,8 @@
   "author": "Dominic Swaby",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "pexels": "^1.4.0"
   },
   "type": "module",
   "devDependencies": {
