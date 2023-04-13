@@ -4,7 +4,7 @@ import { styled } from "@mui/material/styles";
 import './Search.css';
 import {debounce} from "lodash";
 
-
+// these styles are used to override the default MUI text field input styles
 const CssTextField = styled(TextField)({
   "& label.Mui-focused": {
     color: "#282c34",
@@ -29,6 +29,7 @@ const CssTextField = styled(TextField)({
 
 const Search = ({search, setSearch}) => {
 
+    // this search input is debounced to avoid an unnecessary number of network requests being sent
     const debouncedSearch = debounce((val) => {
         setSearch(val)
     }, 500)

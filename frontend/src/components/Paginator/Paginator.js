@@ -17,6 +17,8 @@ const Paginator = ({
   const theme = useTheme();
   const small = useMediaQuery(theme.breakpoints.down("sm"));
 
+  // if the user is searching while selecting a different page the searchedPage will be updated
+  // otherwise the curatedPage will be updated
   const changePage = (e, pageNumber) => {
     if (search) {
       setSearchedPage(pageNumber);
@@ -26,6 +28,9 @@ const Paginator = ({
     myRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+
+  // much of the logic here depends on if the user is searching or not, i.e. if the search input is empty or not
+  // the total number of pages (the count attribute) calculates the number of pages based on the number of total search results
   return (
     <Stack spacing={2} className="paginator-stack">
       <Pagination

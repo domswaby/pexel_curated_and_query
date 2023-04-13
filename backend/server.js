@@ -2,14 +2,16 @@ import express from "express";
 import dotenv from "dotenv";
 import pexelsRoutes from "./routes/pexelsRoutes.js";
 
-const app = express();
-dotenv.config();
+const app = express(); 
+// configure environment which will contain Pexels API key
+dotenv.config(); 
 
 app.get("/", (req, res) => {
   res.send("Test text");
 });
 
-app.use("/api/pexels", pexelsRoutes);
+// this middleware contains routes for getting curated and searched photos
+app.use("/api/pexels", pexelsRoutes); 
 
 const PORT = process.env.PORT || 5000;
 

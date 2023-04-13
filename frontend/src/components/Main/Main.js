@@ -19,9 +19,7 @@ const Main = ({ myRef }) => {
       : 1
   );
   const [search, setSearch] = useState(
-    localStorage.getItem("query")
-      ? localStorage.getItem("query")
-      : ""
+    localStorage.getItem("query") ? localStorage.getItem("query") : ""
   );
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -45,38 +43,20 @@ const Main = ({ myRef }) => {
     );
     setTotalSearchedResults(data.total_results);
     setImages(data.photos);
-    console.log(data);
     setLoading(false);
   };
 
-//   useEffect(() => {
-//     localStorage.setItem("firstRender", "true");
-//     let savedCuratedPage = localStorage.getItem("curatedPage") || "1";
-//     localStorage.setItem("curatedPage", savedCuratedPage);
-//     let savedSearchedPage = localStorage.getItem("searchedPage") || "1";
-//     localStorage.setItem("searchedPage", savedSearchedPage);
-//   }, []);
-
   useEffect(() => {
-    // if (localStorage.getItem("firstRender") === "true") {
-    //   localStorage.setItem("firstRender", "false");
-    //   if (localStorage.getItem("query")) {
-    //     getSearched(Number(localStorage.getItem("searchedPage")));
-    //   } else {
-    //     getCurated(Number(localStorage.getItem("curatedPage")));
-    //   }
-    // } else {
-      if (search) {
-        localStorage.setItem("query", search);
-        localStorage.setItem("searchedPage", String(searchedPage));
-        getSearched();
-      } else {
-        localStorage.setItem("query", "");
-        localStorage.setItem("searchedPage", "1");
-        localStorage.setItem("curatedPage", String(curatedPage));
-        getCurated();
-      }
-    // }
+    if (search) {
+      localStorage.setItem("query", search);
+      localStorage.setItem("searchedPage", String(searchedPage));
+      getSearched();
+    } else {
+      localStorage.setItem("query", "");
+      localStorage.setItem("searchedPage", "1");
+      localStorage.setItem("curatedPage", String(curatedPage));
+      getCurated();
+    }
   }, [search, curatedPage, searchedPage]);
 
   return (

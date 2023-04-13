@@ -16,7 +16,10 @@ const ImageGrid = ({ images, loading }) => {
   const small = useMediaQuery("(max-width:500px)");
   const medium = useMediaQuery(theme.breakpoints.down("md"));
 
-
+// this ImageList MUI component maps through a list of images if the data is available
+// if not available it generates a dummy list of length 10 (i.e. the number of photos on each page)
+// the dummy list is used to display "skeleton" placeholders for the pictures which are loading
+// the ImageListItemBar component is used to display a semi transparent bar of information including photographer name and url 
 
   return (
     <ImageList gap={12} cols={small ? 1 : medium ? 2 : 3}>
