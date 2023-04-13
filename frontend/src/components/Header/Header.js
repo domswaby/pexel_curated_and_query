@@ -3,7 +3,7 @@ import "./Header.css"
 
 const Header = () => {
   return (
-    <div className="header">Welcome to Pexels Curated and Search!</div>
+    <div className="header">Search Pexels or enjoy curated photos!</div>
   )
 }
 

@@ -8,16 +8,22 @@ import {
   Skeleton,
   useMediaQuery,
   Card,
+  useTheme
 } from "@mui/material";
 
 const ImageGrid = ({ images, loading }) => {
-  //   const matchDownMd = useMediaQuery(theme.breakpoints.down("sm"));
+  const theme = useTheme();
+  const small = useMediaQuery("(max-width:500px)");
+  const medium = useMediaQuery(theme.breakpoints.down("md"));
+
+
+
   return (
-    <ImageList sx={{ width: { md: 1000 } }} cols={3}>
+    <ImageList gap={12} cols={small ? 1 : medium ? 2 : 3}>
       {(loading ? Array.from(new Array(10)) : images).map((item, index) => (
-        <Card>
-          <ImageListItem key={index} sx={{ height: "100% !important" }}>
-            {item ? (
+        <Card sx={{ height: "350px" }} >
+          {item ? (
+            <ImageListItem key={index} sx={{ height: "100% !important" }}>
               <>
                 <Image image={item} />
                 <ImageListItemBar
@@ -31,10 +37,10 @@ const ImageGrid = ({ images, loading }) => {
                   }
                 />
               </>
-            ) : (
-              <Skeleton variant="rectangular" />
-            )}
-          </ImageListItem>
+            </ImageListItem>
+          ) : (
+            <Skeleton variant="rectangular" width={350} height={350} />
+          )}
         </Card>
       ))}
     </ImageList>

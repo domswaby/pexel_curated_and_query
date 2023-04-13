@@ -42,7 +42,7 @@ const Main = () => {
   }, []);
 
   return (
-    <Container maxWidth="lg" sx={{display: "flex", justifyContent: "center", flexDirection: "column"}}>
+    <Container maxWidth="lg" sx={{display: "flex", alignItems: "center", flexDirection: "column"}}>
       <Search />
       <ImageGrid images={images} loading={loading} />
     </Container>
