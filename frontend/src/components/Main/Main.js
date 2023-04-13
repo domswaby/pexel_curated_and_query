@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import Search from "../Search/Search";
 import ImageGrid from "../ImageGrid/ImageGrid";
+import Paginator from "../Paginator/Paginator";
 import Container from "@mui/material/Container";
 import axios from "axios";
 
-const Main = () => {
+const Main = ({ myRef }) => {
   const [curatedPage, setCuratedPage] = useState(1);
   const [searchedPage, setSearchedPage] = useState(1);
   const [search, setSearch] = useState("");
@@ -35,16 +36,33 @@ const Main = () => {
 
   useEffect(() => {
     if (search) {
+      setSearchedPage(1);
       getSearched();
     } else {
       getCurated();
     }
-  }, [search]);
+  }, [search, curatedPage, searchedPage]);
 
   return (
-    <Container maxWidth="lg" sx={{display: "flex", alignItems: "center", flexDirection: "column", marginTop: "12px"}}>
-      <Search search={search} setSearch={setSearch}/>
+    <Container
+      maxWidth="lg"
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+        marginTop: "12px",
+      }}
+    >
+      <Search search={search} setSearch={setSearch} />
       <ImageGrid images={images} loading={loading} />
+      <Paginator
+        search={search}
+        curatedPage={curatedPage}
+        searchedPage={searchedPage}
+        setCuratedPage={setCuratedPage}
+        setSearchedPage={setSearchedPage}
+        myRef={myRef}
+      />
     </Container>
   );
 };

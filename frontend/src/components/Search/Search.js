@@ -29,7 +29,6 @@ const CssTextField = styled(TextField)({
 
 const Search = ({search, setSearch}) => {
 
-
     const debouncedSearch = debounce((val) => {
         setSearch(val)
     }, 500)
