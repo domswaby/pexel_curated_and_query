@@ -1,23 +1,52 @@
 import { useEffect, useState } from "react";
 import Search from "../Search/Search";
 import ImageGrid from "../ImageGrid/ImageGrid";
+import Container from "@mui/material/Container";
 import axios from "axios";
 
 const Main = () => {
   const [curatedPage, setCuratedPage] = useState(1);
+  const [searchedPage, setSearchedPage] = useState(1);
+  const [search, setSearch] = useState("");
+  const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const getCurated = async () => {
-    const images = await axios.get(
-      `/api/pexels/curated?page=${curatedPage}&per_page=10`
+    setLoading(true);
+    const {
+      data: { photos },
+    } = await axios.get(`/api/pexels/curated?page=${curatedPage}&per_page=10`);
+    setImages(photos);
+    setLoading(false);
+    console.log(photos);
+  };
+
+  const getSearched = async () => {
+    setLoading(true);
+    const {
+      data: { photos },
+    } = await axios.get(
+      `/api/pexels/search?page=${searchedPage}&per_page=10&query=dog`
     );
-    console.log(images);
+    setImages(photos);
+    console.log(photos);
+    setLoading(false);
   };
 
   useEffect(() => {
-    getCurated();
+    if (search) {
+      getSearched();
+    } else {
+      getCurated();
+    }
   }, []);
 
-  return <div>Main</div>;
+  return (
+    <Container maxWidth="lg" sx={{display: "flex", justifyContent: "center", flexDirection: "column"}}>
+      <Search />
+      <ImageGrid images={images} loading={loading} />
+    </Container>
+  );
 };
 
 export default Main;
