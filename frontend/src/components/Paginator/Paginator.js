@@ -40,6 +40,8 @@ const Paginator = ({
         size={small ? "small" : "large"}
         variant="outlined"
         shape="rounded"
+        hidePrevButton={search ? (searchedPage === 1 ? true : false) : (curatedPage === 1 ? true : false)}
+        hideNextButton={search ? (searchedPage === Math.ceil(totalSearchedResults / 10) ? true : false) : (curatedPage === Math.ceil(totalCuratedResults / 10) ? true : false)}
       />
     </Stack>
   );

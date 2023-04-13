@@ -36,7 +36,6 @@ const Search = ({search, setSearch}) => {
   return (
     <>
       <CssTextField
-        // id="standard-search"
         label="🔍 Search Images"
         type="search"
         id="custom-css-outlined-input"
