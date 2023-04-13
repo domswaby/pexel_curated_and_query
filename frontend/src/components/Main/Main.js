@@ -39,11 +39,11 @@ const Main = () => {
     } else {
       getCurated();
     }
-  }, []);
+  }, [search]);
 
   return (
-    <Container maxWidth="lg" sx={{display: "flex", alignItems: "center", flexDirection: "column"}}>
-      <Search />
+    <Container maxWidth="lg" sx={{display: "flex", alignItems: "center", flexDirection: "column", marginTop: "12px"}}>
+      <Search search={search} setSearch={setSearch}/>
       <ImageGrid images={images} loading={loading} />
     </Container>
   );
