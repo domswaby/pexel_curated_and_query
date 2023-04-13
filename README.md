@@ -70,7 +70,7 @@ Follow these steps to get up and running:
    ```
 4. Create a .env file in the root folder and add your API key as "PEXELS_KEY"
    ```js
-   PEXELS_KEY=ENTER_YOUR_API_KEY
+   PEXELS_KEY=ENTER_YOUR_API_KEY_WITHOUT_QUOTES
    ```
 5. Run the project - in the root directory enter
    ```js
