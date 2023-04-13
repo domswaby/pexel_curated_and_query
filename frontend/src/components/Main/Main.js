@@ -4,6 +4,8 @@ import ImageGrid from "../ImageGrid/ImageGrid";
 import Paginator from "../Paginator/Paginator";
 import Container from "@mui/material/Container";
 import axios from "axios";
+import { Box } from "@mui/system";
+import "./Main.css"
 
 const Main = ({ myRef }) => {
   const [curatedPage, setCuratedPage] = useState(1);
@@ -11,32 +13,30 @@ const Main = ({ myRef }) => {
   const [search, setSearch] = useState("");
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [totalCuratedResults, setTotalCuratedResults] = useState(0)
+  const [totalSearchedResults, setTotalSearchedResults] = useState(0)
 
   const getCurated = async () => {
     setLoading(true);
-    const {
-      data: { photos },
-    } = await axios.get(`/api/pexels/curated?page=${curatedPage}&per_page=10`);
-    setImages(photos);
+    const {data} = await axios.get(`/api/pexels/curated?page=${curatedPage}&per_page=10`);
+    setTotalCuratedResults(data.total_results)
+    setImages(data.photos);
     setLoading(false);
-    console.log(photos);
   };
 
   const getSearched = async () => {
     setLoading(true);
-    const {
-      data: { photos },
-    } = await axios.get(
+    const {data} = await axios.get(
       `/api/pexels/search?page=${searchedPage}&per_page=10&query=dog`
     );
-    setImages(photos);
-    console.log(photos);
+    setTotalSearchedResults(data.total_results);
+    setImages(data.photos);
+    console.log(data);
     setLoading(false);
   };
 
   useEffect(() => {
     if (search) {
-      setSearchedPage(1);
       getSearched();
     } else {
       getCurated();
@@ -54,6 +54,9 @@ const Main = ({ myRef }) => {
       }}
     >
       <Search search={search} setSearch={setSearch} />
+      <Box className="current-results-description"> 
+        <span>{search ? `Search results page ${searchedPage}:` : `Curated feed page ${curatedPage}:`}</span>
+      </Box>
       <ImageGrid images={images} loading={loading} />
       <Paginator
         search={search}
@@ -61,6 +64,8 @@ const Main = ({ myRef }) => {
         searchedPage={searchedPage}
         setCuratedPage={setCuratedPage}
         setSearchedPage={setSearchedPage}
+        totalCuratedResults={totalCuratedResults}
+        totalSearchedResults={totalSearchedResults}
         myRef={myRef}
       />
     </Container>

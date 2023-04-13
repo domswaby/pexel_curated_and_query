@@ -21,10 +21,10 @@ const ImageGrid = ({ images, loading }) => {
   return (
     <ImageList gap={12} cols={small ? 1 : medium ? 2 : 3}>
       {(loading ? Array.from(new Array(10)) : images).map((item, index) => (
-        <Card sx={{ height: "350px" }} >
+        <Card sx={{ height: "350px" }} key={index}>
           {item ? (
-            <ImageListItem key={index} sx={{ height: "100% !important" }}>
-              <>
+            <ImageListItem sx={{ height: "100% !important" }}>
+              <div>
                 <Image image={item} />
                 <ImageListItemBar
                   title={item.photographer}
@@ -36,7 +36,7 @@ const ImageGrid = ({ images, loading }) => {
                     ></IconButton>
                   }
                 />
-              </>
+              </div>
             </ImageListItem>
           ) : (
             <Skeleton variant="rectangular" width={350} height={350} />

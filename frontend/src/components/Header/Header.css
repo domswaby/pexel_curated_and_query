@@ -3,8 +3,10 @@
   min-height: 15vh;
   display: flex;
   flex-direction: column;
+  text-align: center;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  padding: 12px;
   color: white;
 }
