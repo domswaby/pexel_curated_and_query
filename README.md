@@ -64,17 +64,19 @@ Follow these steps to get up and running:
    ```sh
    git clone https://github.com/domswaby/pexel_curated_and_query.git
    ```
-3. Install NPM packages
+3. Install NPM packages - `npm install` must be run in BOTH the root folder and the frontend folder
    ```sh
+   npm install
+   cd frontend 
    npm install
    ```
 4. Create a .env file in the root folder and add your API key as "PEXELS_KEY"
    ```js
    PEXELS_KEY=ENTER_YOUR_API_KEY_WITHOUT_QUOTES
    ```
-5. Run the project - in the root directory enter
+5. Run the project - in the root directory entering the following command will start the frontend and backend at the same time using the concurrently package
    ```js
-   npm start
+   npm run dev
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
