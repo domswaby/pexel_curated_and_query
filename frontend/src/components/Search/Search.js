@@ -2,6 +2,7 @@ import React from 'react'
 import { TextField } from '@mui/material';
 import { alpha, styled } from "@mui/material/styles";
 import './Search.css';
+import {debounce} from "lodash";
 
 
 const CssTextField = styled(TextField)({
@@ -29,6 +30,10 @@ const CssTextField = styled(TextField)({
 const Search = ({search, setSearch}) => {
 
 
+    const debouncedSearch = debounce((val) => {
+        setSearch(val)
+    }, 500)
+
   return (
     <>
       <CssTextField
@@ -36,7 +41,7 @@ const Search = ({search, setSearch}) => {
         label="🔍 Search Images"
         type="search"
         id="custom-css-outlined-input"
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => debouncedSearch(e.target.value)}
       />
     </>
   );
