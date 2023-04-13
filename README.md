@@ -21,12 +21,8 @@
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#contribute">Contribute</a></li>
 
   </ol>
 </details>
@@ -38,11 +34,7 @@
 
 This project allows users to search for and paginate through photos consumed through the Pexels API.  In addition to searching the user can also paginate through live curated photos from Pexels.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ### Built With
-
-Technologies used:
 
 * React
 * Express
@@ -84,7 +76,7 @@ Follow these steps to get up and running:
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Contribute
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
