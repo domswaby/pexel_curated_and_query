@@ -27,11 +27,12 @@ const CssTextField = styled(TextField)({
   width: "100%"
 });
 
-const Search = ({search, setSearch}) => {
+const Search = ({search, setSearch, setSearchedPage}) => {
 
     // this search input is debounced to avoid an unnecessary number of network requests being sent
     const debouncedSearch = debounce((val) => {
         setSearch(val)
+        setSearchedPage(1)
     }, 500)
 
   return (

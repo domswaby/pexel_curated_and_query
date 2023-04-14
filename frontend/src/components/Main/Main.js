@@ -39,7 +39,7 @@ const Main = ({ myRef }) => {
   const getSearched = async () => {
     setLoading(true);
     const { data } = await axios.get(
-      `/api/pexels/search?page=${searchedPage}&per_page=10&query=dog`
+      `/api/pexels/search?page=${searchedPage}&per_page=10&query=${search}`
     );
     setTotalSearchedResults(data.total_results);
     setImages(data.photos);
@@ -69,7 +69,7 @@ const Main = ({ myRef }) => {
         marginTop: "12px",
       }}
     >
-      <Search search={search} setSearch={setSearch} />
+      <Search search={search} setSearch={setSearch} setSearchedPage={setSearchedPage}/>
       <Box className="current-results-description">
         <span>
           {search
