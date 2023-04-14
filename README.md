@@ -56,11 +56,11 @@ Follow these steps to get up and running:
    ```sh
    git clone https://github.com/domswaby/pexel_curated_and_query.git
    ```
-3. Install NPM packages - `npm install` must be run in BOTH the root folder and the frontend folder
+3. Install NPM packages - This command will run `npm install` in the root folder, change directories into the frontend folder, and run `npm install` again
    ```sh
-   npm install-all
+   npm run install-all
    ```
-4. Create a .env file in the root folder and add your API key as "PEXELS_KEY"
+4. Create a .env file in the root folder and add your API key as the value for "PEXELS_KEY"
    ```js
    PEXELS_KEY=ENTER_YOUR_API_KEY_WITHOUT_QUOTES
    ```
@@ -71,13 +71,9 @@ Follow these steps to get up and running:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- USAGE EXAMPLES -->
 ## Contribute
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
