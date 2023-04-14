@@ -58,9 +58,7 @@ Follow these steps to get up and running:
    ```
 3. Install NPM packages - `npm install` must be run in BOTH the root folder and the frontend folder
    ```sh
-   npm install
-   cd frontend 
-   npm install
+   npm install-all
    ```
 4. Create a .env file in the root folder and add your API key as "PEXELS_KEY"
    ```js
