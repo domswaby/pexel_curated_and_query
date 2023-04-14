@@ -64,7 +64,7 @@ Follow these steps to get up and running:
    ```js
    PEXELS_KEY=ENTER_YOUR_API_KEY_WITHOUT_QUOTES
    ```
-5. Run the project - in the root directory entering the following command will start the frontend and backend at the same time using the concurrently package. By default the server will run on port 5000 so be sure to kill any processes you may have running on this port before starting up the app.  
+5. Run the project - in the root directory entering the following command will start the frontend and backend at the same time using the concurrently package. By default the server will run on port 5000 so be sure to kill any processes (`kill $(lsof -t -i:5000)`) you may have running on this port before starting up the app.  
    ```js
    npm run dev
    ```
@@ -93,10 +93,25 @@ Follow these steps to get up and running:
    - Main.js, practically speaking acts as the root component.
    - Aside from the Header.js component, all other components are imported into Main.js or nested under it somewhere. 
    - The useEffect in Main.js is the center of logic within the app and a good place to start when tracing out the flow of the app.  
-   - If anything is in the search input when when state changes, the useEffect will update localStorage and request the relevant page of searchResults
+   - If anything is in the search input when state changes, the useEffect will update localStorage and request the relevant page of searchResults
    - Else it will get the relevant page of curatedResults
 
 ![pexels_mainjs_useeffect](https://user-images.githubusercontent.com/10789682/232108716-87d1b1ad-7f84-49e9-bb31-8d1ac319aea7.png)
+
+ ## Components
+   - App.js 
+     - contains `<Header/>` `<Main/>` 
+   - Main.js 
+     - contains `<Search/>` `<ImageList/>` `<Paginator/>`
+     - state used - all state variables
+   - Search.js
+     - state used - `search`, `setSearch`, and `setSearchedPage`
+   - ImageList.js
+     - contains MUI components to help render image items and placeholder skeletons
+     - contains custom `<Image />` component 
+     - state used - `images`, `loading`
+   - Paginator.js
+     - state used - all state variables (only some setters though)
 
 <!-- Frontend Routes -->
 # Frontend Routes
