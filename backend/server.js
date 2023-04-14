@@ -7,7 +7,7 @@ const app = express();
 dotenv.config(); 
 
 app.get("/", (req, res) => {
-  res.send("Test text");
+  res.send("API running...");
 });
 
 // this middleware contains routes for getting curated and searched photos

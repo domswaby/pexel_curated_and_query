@@ -8,16 +8,19 @@ import { Box } from "@mui/system";
 import "./Main.css";
 
 const Main = ({ myRef }) => {
+  // initialize the curatedPage to its localStorage value or 1 if localStorage has no "curatedPage" key
   const [curatedPage, setCuratedPage] = useState(
     localStorage.getItem("curatedPage")
       ? Number(localStorage.getItem("curatedPage"))
       : 1
   );
+  // initialize the searchedPage to its localStorage value or 1 if localStorage has no "searchedPage" key
   const [searchedPage, setSearchedPage] = useState(
     localStorage.getItem("searchedPage")
       ? Number(localStorage.getItem("searchedPage"))
       : 1
   );
+  // initialize the search value to its localStorage value or "" if localStorage is has no "query" key
   const [search, setSearch] = useState(
     localStorage.getItem("query") ? localStorage.getItem("query") : ""
   );
@@ -46,6 +49,12 @@ const Main = ({ myRef }) => {
     setLoading(false);
   };
 
+  // this useEffect is central to the overall app logic 
+  // it runs when: 
+  // 1. the page loads 
+  // 2. when the user uses the pagination menu to navigate to a new page 
+  // 3. when the user types in the search input
+  
   useEffect(() => {
     if (search) {
       localStorage.setItem("query", search);
@@ -69,7 +78,11 @@ const Main = ({ myRef }) => {
         marginTop: "12px",
       }}
     >
-      <Search search={search} setSearch={setSearch} setSearchedPage={setSearchedPage}/>
+      <Search
+        search={search}
+        setSearch={setSearch}
+        setSearchedPage={setSearchedPage}
+      />
       <Box className="current-results-description">
         <span>
           {search
